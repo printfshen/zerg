@@ -31,7 +31,7 @@ return [
     // 扩展函数文件
     'extra_file_list'        => [THINK_PATH . 'helper' . EXT],
     // 默认输出类型
-    'default_return_type'    => 'html',
+    'default_return_type'    => 'json',
     // 默认AJAX 数据返回格式,可选json xml ...
     'default_ajax_return'    => 'json',
     // 默认JSONP格式返回的处理方法
@@ -91,10 +91,10 @@ return [
     // 是否开启路由
     'url_route_on'           => true,
     // 路由使用完整匹配
-    'route_complete_match'   => false,
+    'route_complete_match'   => true,
     // 路由配置文件（支持配置多个）
     'route_config_file'      => ['route'],
-    // 是否强制使用路由
+    // 是否强制使用路由(api 建议开启)
     'url_route_must'         => false,
     // 域名部署
     'url_domain_deploy'      => false,
@@ -114,6 +114,8 @@ return [
     'request_cache'          => false,
     // 请求缓存有效期
     'request_cache_expire'   => null,
+    // 全局请求缓存排除规则
+    'request_cache_except'   => [],
 
     // +----------------------------------------------------------------------
     // | 模板设置
@@ -156,7 +158,7 @@ return [
     // 显示错误信息
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
-    'exception_handle'       => '',
+    'exception_handle'       => 'app\lib\exception\ExceptionHandler',
 
     // +----------------------------------------------------------------------
     // | 日志设置
@@ -164,11 +166,12 @@ return [
 
     'log'                    => [
         // 日志记录方式，内置 file socket 支持扩展
-        'type'  => 'File',
+//        'type'  => 'File',//开启日志
+        'type'  => 'test', //关闭日志
         // 日志保存目录
         'path'  => LOG_PATH,
         // 日志记录级别
-        'level' => [],
+        'level' => ['sql'],
     ],
 
     // +----------------------------------------------------------------------
