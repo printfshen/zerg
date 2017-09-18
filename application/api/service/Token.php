@@ -32,7 +32,6 @@ class Token
         $token = Request::instance()
             ->header('token');
         $vars = Cache::get($token);
-        echo $token;exit;
         if(!$vars)
         {
             throw new TokenException();
