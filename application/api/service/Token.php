@@ -41,8 +41,8 @@ class Token
                 $vars = json_decode($vars, true);
             }
             if(array_key_exists($key, $vars)){
-                return $vars['$key'];
-            }else{
+                return $vars[$key];
+            } else {
                 throw new Exception("尝试获取的Token变量并不存在");
             }
         }
