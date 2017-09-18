@@ -31,8 +31,6 @@ class Banner
         $banner = BannerModel::getBannerById($id);
 //            ->hidden(['delete_time','update_time']);
 //隐藏  某些字段 hidden  显示某些字段 visible
-        $aa = $banner->toArray();
-        print_r($aa);exit;
         if($banner->isEmpty())
         {
             throw new BannerMissException();

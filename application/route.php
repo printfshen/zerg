@@ -11,16 +11,16 @@
 
 use think\Route;
 
-//Route::rule('Â·ÓÉ±í´ïÊ½','Â·ÓÉµØÖ·','ÇëÇóÀàĞÍ','Â·ÓÉ²ÎÊı(Êı×é)','±äÁ¿¹æÔò(Êı×é)');
-//ÇëÇóÀàĞÍ GET  POST DELETE  PUT *
+//Route::rule('è·¯ç”±è¡¨è¾¾å¼','è·¯ç”±åœ°å€','è¯·æ±‚ç±»å‹','è·¯ç”±å‚æ•°(æ•°ç»„)','å˜é‡è§„åˆ™(æ•°ç»„)');
+//è¯·æ±‚ç±»å‹ GET  POST DELETE  PUT *
 //Route::rule('hello','sample/Test/hello','GET|POST',['https'=>false]);
 //Route::get('hello','sample/Test/hello');
 //Route::post('hello/:id','sample/Test/hello');
 //Route::any('hello','sample/Test/hello');
 
-//Banner Â·ÓÉ
+//Banner è·¯ç”±
 Route::get('api/:version/Banner/:id','api/:version.Banner/getBanner');
-//Theme Â·ÓÉ
+//Theme è·¯ç”±
 Route::get('api/:version/Theme','api/:version.Theme/getSimpleList');
 
 
@@ -34,7 +34,7 @@ Route::get('api/:version/Product/recent','api/:version.Product/getRecent');
 Route::get('api/:version/Product/by_category','api/:version.Product/getAllInCategory');
 
 Route::get('api/:version/Product/:id','api/:version.Product/getOne', [], ['id' => '\d+']);
-//Â·ÓÉ·Ö×é  µÈÍ¬ÉÏÃæ  Ğ§ÂÊ¸ß
+//è·¯ç”±åˆ†ç»„  ç­‰åŒä¸Šé¢  æ•ˆç‡é«˜
 //Route::group('api/:version/product', function (){
 //    Route::get('/by_category', 'api/:version.Product/getAllInCategory');
 //    Route::get('/recent', 'api/:version.Product/getRecent');
@@ -42,12 +42,16 @@ Route::get('api/:version/Product/:id','api/:version.Product/getOne', [], ['id' =
 //});
 
 
-//·ÖÀàÁĞ±í½Ó¿Ú
+//åˆ†ç±»åˆ—è¡¨æ¥å£
 Route::get('api/:version/Category/all','api/:version.Category/getAllCategories');
 //
 
 //Token
 Route::post('api/:version/Token/user','api/:version.Token/getToken');
+
+
+Route::post('api/:version/Address', 'api/:version.Address/createOrUpdateAddress');
+
 
 
 

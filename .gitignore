@@ -1,4 +1,8 @@
 .idea
 
 *.log
-
+.gitignore
+/zerg/nbproject/private/
+/nbproject/private/
+nbproject/
+zerg/public_html/

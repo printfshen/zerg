@@ -38,19 +38,51 @@ class BaseValidate extends Validate
         }
     }
 
+    /**
+     * 判断是否是正整数
+     * @param $value
+     * @param string $rule
+     * @param string $data
+     * @param string $field
+     * @return bool
+     */
     protected function isPositiveInteger($value,$rule = '', $data = '',$field = '' )
     {
         if(is_numeric($value) && is_int($value + 0) && ($value + 0) > 0)
         {
             return true;
         }
-        else
-        {
+        else{
             return false;
 //            return $field.'必须为正整数';
         }
     }
 
+    /**
+     * 判断是否是电话号码
+     * @param $value
+     * @return bool
+     */
+    protected function isMobile($value)
+    {
+        $rule = "^1(3|4|5|6|7|8)[0-9]\d{8}$^";
+        $result = preg_match($rule, $value);
+        if($result)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * 判断是否为空
+     * @param $value
+     * @param string $rule
+     * @param string $data
+     * @param string $field
+     * @return bool
+     */
     protected function isNotEmpty($value, $rule = '', $data = '', $field = '')
     {
         if(empty($value))
@@ -59,5 +91,29 @@ class BaseValidate extends Validate
         }else{
             return true;
         }
+    }
+
+    /**
+     * 获取验证的所有值
+     * @param $arrays
+     * @return array
+     * @throws ParameterException
+     */
+    public function getDataByRule($arrays)
+    {
+        if(array_key_exists("user_id", $arrays) |
+        array_key_exists("uid", $arrays))
+        {
+            //不允许包含user_id 或者uid，防止恶意覆盖user_id外键
+            throw new ParameterException([
+                "msg" => "参数中包含有非法的参数名user_id或者uid"
+            ]);
+        }
+        $newArray = [];
+        foreach ($this->rule as $key => $value)
+        {
+            $newArray[$key] = $arrays[$key];
+        }
+        return $newArray;
     }
 }
