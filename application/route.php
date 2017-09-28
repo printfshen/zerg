@@ -52,7 +52,7 @@ Route::post('api/:version/Token/user','api/:version.Token/getToken');
 
 Route::post('api/:version/Address', 'api/:version.Address/createOrUpdateAddress');
 
-
+Route::post('api/:version/Order','api/:version.Order/placeOrder');
 
 
 

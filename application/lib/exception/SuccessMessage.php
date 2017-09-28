@@ -9,7 +9,7 @@
 namespace app\lib\exception;
 
 
-class SuccessMessage extends BaseException
+class SuccessMessage 
 {
     public $code = 201;
     public $msg = "OK";
